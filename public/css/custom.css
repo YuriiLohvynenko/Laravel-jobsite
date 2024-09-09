@@ -1,0 +1,137 @@
+#alert .alert-danger {
+    background: #ed6359;
+    padding: 9px;
+    margin-bottom: 15px;
+}
+
+#alert .alert-success {
+    background: #157d10ba;
+    padding: 9px;
+    margin-bottom: 15px;
+}
+
+#alert .alert {
+    color: #fff;
+    text-align: center;
+}
+
+
+/*.hamburger {*/
+
+
+/*top: 31px;*/
+
+
+/*}*/
+
+
+/* Adding by Daniel Ramos */
+
+img.round-rect-icon {
+    width: 50px;
+    height: auto;
+    float: right;
+}
+
+div.location-input-wrapper svg {
+    width: 45px !important;
+    height: 45px !important;
+    float: right;
+    padding: 12px;
+}
+
+div.location-input-wrapper svg path {
+    fill: #717171;
+}
+
+.slider-handle {
+    border: 2px solid #000000 !important;
+}
+
+.slider-selection {
+    background-color: #000000 !important;
+}
+
+.search-result-wrapper .has-search .form-control {
+    padding-left: 2.375rem;
+}
+
+.search-result-wrapper .has-search .form-control-feedback {
+    position: absolute;
+    z-index: 2;
+    display: block;
+    width: 2.375rem;
+    height: 2.375rem;
+    line-height: 2.975rem;
+    text-align: center;
+    pointer-events: none;
+    color: #aaa;
+}
+
+.location-select-row {
+    border-bottom: 3px solid #e0e0e0;
+    margin: 0 0px;
+}
+
+.location-select-row input#location {
+    box-shadow: none;
+    padding-left: 0px !important;
+    font-size: 18px;
+    color: black;
+}
+
+.padding-left-0 {
+    padding-left: 0px !important;
+}
+
+.padding-right-0 {
+    padding-right: 0px !important;
+}
+
+.full-page-sidebar .sidebar-widget:last-of-type {
+    /* margin-bottom: 0px !important; */
+}
+
+.search-result-wrapper .search-input-section {
+    float: left;
+}
+
+.search-result-wrapper .search-input-section input {
+    box-shadow: none !important;
+}
+
+.search-result-wrapper .search-result-section {
+    float: right;
+    text-align: right;
+    line-height: 48px;
+}
+
+.search-result-wrapper .search-result-section>span {
+    padding-right: 5px;
+}
+
+.search-result-wrapper .search-result-section>img {
+    width: 22px;
+    opacity: 0.5;
+}
+
+img.no_result_img {
+    width: 100%;
+    height: auto;
+}
+
+@media (max-width: 768px) {
+    .search-result-wrapper {
+        margin-bottom: 10px;
+        border-top: 3px solid #e0e0e0;
+    }
+}
+
+@media (min-width: 768px) {
+    .search-result-wrapper {
+        margin-bottom: 10px;
+    }
+}
+
+
+/* Adding ended by Daniel Ramos */

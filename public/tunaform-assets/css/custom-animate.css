@@ -1,0 +1,89 @@
+.gallery-item.now-in-view .inner-box,
+.gallery-block.now-in-view .inner-box,
+.sec-title.now-in-view .title,
+.team-block.now-in-view .inner-box .lower-box .designation,
+.gallery-single-section .portfolio-gallery .image.now-in-view{
+  -webkit-animation-name: fadeIn;
+  animation-name: fadeIn;
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+   -webkit-animation-delay: 0.35s;
+  animation-delay: 0.35s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+
+.icon-one.now-in-view,
+.sec-title.now-in-view:before,
+.about-block.now-in-view .inner-box h3,
+.icon-sixteen.now-in-view,
+.icon-eighteen.now-in-view,
+.icon-fifteen.now-in-view,
+.left-icon.now-in-view,
+.circle-three.now-in-view{
+  -webkit-animation-name: fadeInLeft;
+  animation-name: fadeInLeft;
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+
+.icon-two.now-in-view,
+.icon-four.now-in-view,
+.icon-eight.now-in-view{
+  -webkit-animation-name: zoomInStable;
+  animation-name: zoomInStable;
+  -webkit-animation-duration: 2.5s;
+  animation-duration: 2.5s;
+  -webkit-animation-delay: 0.5s;
+  animation-delay: 0.5s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+
+.icon-three.now-in-view,
+.about-block.now-in-view .inner-box .icon-box,
+.icon-ten.now-in-view,
+.icon-eleven.now-in-view,
+.icon-seventeen.now-in-view,
+.icon-thirteen.now-in-view,
+.icon-fourteen.now-in-view,
+.right-icon.now-in-view,
+.circle-two.now-in-view{
+  -webkit-animation-name: fadeInRight;
+  animation-name: fadeInRight;
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+
+.icon-five.now-in-view,
+.icon-seven.now-in-view,
+.main-banner-section.now-in-view h2{
+  -webkit-animation-name: fadeInDown;
+  animation-name: fadeInDown;
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-delay: 0.5s;
+  animation-delay: 0.5s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+
+.icon-six.now-in-view,
+.icon-nine.now-in-view,
+.main-footer.now-in-view .logo-box,
+.sec-title.now-in-view h2,
+.circle-one.now-in-view,
+.blue-triangle.now-in-view{
+  -webkit-animation-name: fadeInUp;
+  animation-name: fadeInUp;
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-delay: 0.5s;
+  animation-delay: 0.5s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+}

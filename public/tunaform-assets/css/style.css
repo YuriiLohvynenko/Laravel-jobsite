@@ -1,0 +1,1887 @@
+/*------------------------------------------------------------------
+[Master Stylesheet]
+
+Project:	Tuna Signup Form Wizard
+Version:	1.0
+Last change:	30/06/17 [first release]
+Assigned to:	Wmedya
+Primary use:	Signup, Login, Reservation etc. 
+-------------------------------------------------------------------*/
+
+/*------------------------------------------------------------------
+[Table of contents]
+
+1. Body 
+2. Input & Labels
+3. Buttons
+    4. Loader / .tuna-loader-container
+    5. Signup Container / .tuna-signup-container
+        5.1. Left Panel / .tuna-signup-left
+            5.1.1. Logo / .tuna-signup-logo
+            5.1.2. Testimonial Slider / .tuna-slider-container
+        5.2. Right Panel / .tuna-signup-right
+            5.2.1. Steps Counts / .steps-count
+            5.2.2. Steps / .tuna-steps
+            5.2.2.1 Step Content / .step
+            5.2.2.2 Confirm Step / .step-confirm
+            5.2.3. Buttons / .button-container
+6. Animations
+7. Theme Options
+    7.1. Green Theme
+    7.2. Yellow Theme
+    7.3. Darkblue Theme
+8. Responsive Styles
+9. Bootstrap Select
+
+-------------------------------------------------------------------*/
+
+@import url("https://fonts.googleapis.com/css?family=Nunito:300,400,600,700,800&subset=latin-ext");
+
+@import url("animate.css");
+@import url("custom-animate.css");
+
+/*------------------------------------------------------------------
+[1. Body / body]
+*/
+body {
+  font-size: 13px;
+  font-family: "Nunito", "HelveticaNeue", "Helvetica Neue", Helvetica, Arial,
+    sans-serif;
+  background: #f55661;
+}
+.logo {
+  font-size: 30px;
+  font-weight: 700;
+  padding-bottom: 35px;
+  color: #333;
+}
+.theme {
+  color: #2a41e8;
+}
+.custom-container {
+  width: 100%;
+  padding: 0 60px 0;
+}
+.pull-left {
+  float: left;
+}
+
+/*------------------------------------------------------------------
+[2.Input & Labels ]
+*/
+.formLabel {
+  display: block;
+  width: 90%;
+  position: absolute;
+  font-size: 22px;
+  line-height: 1.5;
+  font-weight: 300;
+  color: #888;
+  opacity: 0.6;
+  transition: all 0.3s;
+}
+.formLabel.active {
+  -webkit-transform: translateX(80px) translateY(-130%);
+  transform: translateX(80px) translateY(-130%);
+  font-size: 19px;
+  font-weight: 500;
+  color: #888;
+  opacity: 0.8;
+}
+.formInput {
+  background-color: transparent;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  border-bottom: 2px solid #888;
+  font-weight: 900;
+  font-size: 22px;
+  text-transform: uppercase;
+  width: 100%;
+  color: #2a41e8;
+  display: block;
+}
+.formInput:focus {
+  outline: none;
+  border-bottom: 2px solid #2a41e8;
+  -webkit-transition: border-bottom 0.5s;
+  -moz-transition: border-bottom 0.5s;
+  -ms-transition: border-bottom 0.5s;
+  -o-transition: border-bottom 0.5s;
+  transition: border-bottom 0.5s;
+}
+.formInput.input-error {
+  border-bottom-color: rgba(0, 0, 0, 0.5);
+}
+.help-error {
+  font-size: 14px;
+  font-style: italic;
+  color: rgba(0, 0, 0, 0.5);
+  font-weight: bold;
+  padding: 10px 0;
+  display: none;
+  text-align: right;
+}
+.help-error i {
+  font-weight: bold;
+  font-size: 16px;
+  vertical-align: middle;
+  float: right;
+  margin-left: 20px;
+}
+.help-info {
+  text-align: right;
+  font-size: 13px;
+  font-style: italic;
+  font-weight: 600;
+  padding: 10px 0;
+}
+
+/*------------------------------------------------------------------
+[3. Buttons ]
+*/
+.btn {
+  font-weight: 700;
+  font-size: 15px;
+}
+.btn-rounded {
+  border-radius: 30px;
+}
+.btn-white {
+  background: #fff;
+  color: #777;
+  padding: 10px 30px !important;
+}
+.btn-white:hover {
+  background: #eee;
+  color: #333;
+}
+.btn-white-transparent {
+  border: 2px solid #fff;
+  background: none;
+  color: #fff;
+  padding: 10px 30px !important;
+}
+.btn-white-transparent:hover {
+  background: #fff;
+  color: #777;
+}
+
+/*------------------------------------------------------------------
+[4. Loader / .tuna-loader-container]
+*/
+.tuna-loader-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  overflow: hidden;
+  background: #fff;
+  z-index: 1000;
+}
+.tuna-loader {
+  position: absolute;
+  top: 50%;
+  margin-top: -25px;
+  left: 50%;
+  margin-left: -25px;
+  border: 4px solid #f3f3f3; /* Light grey */
+  border-top: 4px solid #3498db; /* Blue */
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  animation: spin 1s linear infinite;
+}
+
+/*------------------------------------------------------------------
+[5. Signup Container / .tuna-signup-container]
+*/
+.tuna-container {
+  width: calc(100% - 80px) !important;
+  width: 94.2%;
+}
+@media only screen and (max-width: 784px) {
+  .tuna-container {
+    width: calc(100% - 10px) !important;
+    width: 94.2%;
+  }
+}
+.tuna-signup-container {
+  display: none;
+  position: relative;
+  z-index: 0;
+  overflow: hidden;
+  background: #fff;
+  /* background: url(http://t.commonsupport.com/bari/images/backgrounds/bg.png) no-repeat #F7F7F7; */
+}
+.tuna-signup-container:after {
+  z-index: -1;
+  position: absolute;
+  height: 2000px;
+  display: block;
+  content: "";
+  top: 0;
+  right: 0;
+  width: 40%;
+  background: #fff;
+  /* background: url(http://t.commonsupport.com/bari/images/backgrounds/bg.png) no-repeat #F7F7F7; */
+}
+
+/*------------------------------------------------------------------
+[5.1 Left Panel / .tuna-signup-left]
+*/
+.tuna-signup-left {
+  padding: 30px 0 30px;
+}
+/* .tuna-signup-left p {
+    font-size: 18px;
+    line-height: 30px;
+    color: #999;
+} */
+.tuna-title {
+  font-size: 19px;
+  font-weight: 500;
+  line-height: 30px;
+  color: #fff;
+}
+.tuna-trial {
+  font-size: 22px;
+  font-weight: 900;
+  text-transform: uppercase;
+  margin-top: 10px;
+  color: #666;
+}
+.tuna-trial span {
+  font-weight: 900;
+  color: #2a41e8;
+}
+
+/*------------------------------------------------------------------
+[5.1.1. Logo / .tuna-signup-logo]
+*/
+.tuna-signup-logo {
+  margin-bottom: 20px;
+}
+
+/*------------------------------------------------------------------
+[5.1.2. Testimonial Slider / .tuna-slider-container]
+*/
+.bx-wrapper {
+  background: none;
+  border: none;
+  box-shadow: none;
+}
+.tuna-signup-testimonial {
+  margin-top: 60px;
+  height: 300px;
+}
+.tuna-signup-testimonial:after {
+  clear: both;
+  content: "";
+  display: block;
+}
+.tuna-signup-testimonial img {
+  height: 60px;
+  float: right;
+}
+.tuna-signup-testimonial b {
+  font-size: 16px;
+  color: #999;
+  display: block;
+  margin-top: 20px;
+}
+.tuna-signup-testimonial b span {
+  font-size: 14px;
+  color: #ccc;
+  display: block;
+  font-weight: normal;
+  margin-top: 3px;
+}
+.tuna-signup-testimonial i {
+  font-size: 30px;
+}
+.tuna-signup-testimonial p {
+  color: #666;
+  font-weight: 600;
+  font-size: 20px;
+  margin-top: 15px;
+}
+
+/*------------------------------------------------------------------
+[5.2. Right Panel / .tuna-signup-right]
+*/
+.tuna-signup-right {
+  color: #666;
+  background: #fff;
+  position: relative;
+  overflow-y: auto;
+  padding: 30px 30px 0 0;
+}
+
+/*------------------------------------------------------------------
+[5.2.1 Steps Counts / .steps-count]
+*/
+.steps-count {
+  font-weight: bold;
+  font-size: 13px;
+  text-align: right;
+  color: #fff;
+}
+.gohome {
+  color: #777;
+  font-size: 14px;
+  font-weight: 600;
+  padding: 0 10% 0;
+  text-decoration: none;
+}
+
+/*------------------------------------------------------------------
+[5.2.2 Steps / .tuna-steps]
+*/
+.tuna-steps .step {
+  padding-left: 60px;
+  position: absolute;
+  width: 100%;
+  top: 50%;
+  margin-top: -12%;
+  opacity: 0;
+  visibility: hidden;
+  transition: 0.5s;
+  -webkit-transform: translateY(-180px);
+  -ms-transform: translateY(-180px);
+  transform: translateY(-180px);
+}
+.step.step-active {
+  transform: none;
+  visibility: visible;
+  opacity: 1;
+}
+.step-hide {
+  /*-webkit-transform: translateY(-50px) !important;*/
+  /*transform: translateY(-50px) !important;*/
+}
+
+.tuna-steps .step-confirm {
+  position: initial;
+  top: initial;
+  margin-top: 0;
+  padding-top: 30px;
+  overflow-x: hidden;
+  display: none;
+}
+.tuna-steps .step-confirm.step-active {
+  display: block;
+}
+.step-label {
+  font-size: 40px;
+  margin-bottom: 20px;
+  font-weight: 300;
+  font-size: 32px;
+}
+
+.tuna-steps .checkbox-inline,
+.tuna-steps .radio-inline {
+  font-size: 16px;
+  font-weight: 300;
+  padding-left: 25px;
+  line-height: 20px;
+  margin-right: 20px;
+  margin-bottom: 10px;
+}
+.checkbox-inline + .checkbox-inline,
+.radio-inline + .radio-inline {
+  margin-left: 0;
+}
+
+/*------------------------------------------------------------------
+[5.2.2.2 Confirm Step / .step-confirm]
+*/
+.step-confirm .form-group {
+  opacity: 1;
+  border-bottom: 1px solid rgba(51, 51, 51, 0.4);
+  padding: 20px 0;
+}
+.step-confirm.step-active {
+  animation: animateInput .3s forwards;
+  -webkit-transform: translateY(50px);
+  transform: translateY(50px);
+}
+.step-confirm .form-group:nth-of-type(1) {
+  animation-delay: 0.1s;
+}
+.step-confirm .form-group:nth-of-type(2) {
+  animation-delay: 0.3s;
+}
+.step-confirm .form-group:nth-of-type(3) {
+  animation-delay: 0.5s;
+}
+.step-confirm .form-group:nth-of-type(4) {
+  animation-delay: 0.7s;
+}
+.step-confirm .form-group:nth-of-type(5) {
+  animation-delay: 0.9s;
+}
+.step-confirm .control-label {
+  text-align: left;
+  color: rgba(51, 51, 51, 0.7);
+  font-weight: normal;
+  font-size: 20px;
+}
+.step-confirm input {
+  box-shadow: none;
+  background: none;
+  border: none;
+  box-shadow: none;
+  color: rgba(51, 51, 51, 0.7);
+  font-size: 20px;
+  padding: 10px 20px;
+  height: auto;
+  transition: all 0.35s ease;
+  font-weight: 600;
+}
+.step-confirm input:hover {
+}
+.step-confirm input:focus {
+  box-shadow: none;
+  background: rgba(51, 51, 51, 0.5);
+  color: #333;
+}
+.step-confirm .input-container {
+  position: relative;
+}
+.step-confirm .input-container > a {
+  position: absolute;
+  top: 15px;
+  right: 0;
+  color: #fff;
+  font-weight: bold;
+  font-size: 14px;
+  color: rgba(51, 51, 51, 0.8);
+}
+.step-confirm .input-container > a:hover {
+  color: rgba(51, 51, 51, 1);
+  text-decoration: none;
+}
+.step-confirm .input-container > a.showPass {
+  right: 60px;
+}
+.step-confirm-buttons {
+  text-align: right;
+  margin-top: 35px;
+}
+.step-confirm-buttons a {
+  display: block;
+  margin-bottom: 10px;
+}
+.step-confirm-buttons > div {
+  display: inline-block;
+  text-align: center;
+  padding-bottom: 10px;
+}
+.step-confirm .confirm-input-error,
+.step-confirm .confirm-input-error:focus {
+  background: #b74950 !important;
+  color: #fff;
+}
+
+.step-confirm .bootstrap-select button {
+  border-bottom: none;
+  font-weight: 600;
+  font-size: 20px;
+  padding: 10px 20px;
+}
+
+.step-confirm .bootstrap-select.btn-group .dropdown-toggle .caret {
+  display: none;
+}
+
+.agreement {
+  font-size: 14px;
+}
+.agreement a {
+  color: #fff;
+  text-decoration: underline;
+  font-weight: 600;
+}
+
+/*------------------------------------------------------------------
+[5.2.3 Buttons / .button-container]
+*/
+.button-container {
+  position: absolute;
+  bottom: 55px;
+  right: 0;
+  text-align: right;
+  width: 100%;
+}
+.button-container > div {
+  display: inline-block;
+  text-align: center;
+  float: right;
+  margin-left: 10px;
+}
+.button-container > div a {
+  margin-bottom: 10px;
+  display: block;
+}
+.prevStep {
+  outline: none;
+  display: none;
+}
+.return {
+  color: #888;
+}
+.button-container a,
+.button-container a:hover,
+.button-container a:focus,
+.button-container a:active,
+.button-container a:active:focus {
+  outline: none;
+}
+
+/*------------------------------------------------------------------
+[6. Animations]
+*/
+
+.tuna_loading {
+  width: 60px;
+  height: 60px;
+  margin: auto;
+  margin-bottom: 20px;
+  display: block;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@-webkit-keyframes animateInput {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateY(50px);
+    transform: translateY(50px);
+  }
+  to {
+    opacity: 1;
+    -webkit-transform: none;
+    transform: none;
+  }
+}
+@keyframes animateInput {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateY(50px);
+    transform: translateY(50px);
+  }
+  to {
+    opacity: 1;
+    -webkit-transform: none;
+    transform: none;
+  }
+}
+
+/*------------------------------------------------------------------
+[7. Theme Options]
+
+[7.1 Green Theme]
+*/
+.body-green {
+  background: #fff;
+}
+.tuna-green {
+}
+.tuna-green .tuna-signup-right {
+  background: #fff;
+}
+.tuna-green:after {
+  background: #fff;
+}
+
+/*------------------------------------------------------------------
+[7.2 Yellow Theme]
+*/
+.body-yellow {
+  background: #de991a;
+}
+.tuna-yellow {
+  background: url(http://t.commonsupport.com/bari/images/backgrounds/yellow-bg.jpg);
+}
+.tuna-yellow .tuna-signup-right {
+  background: #de991a;
+}
+.tuna-yellow:after {
+  background: #de991a;
+}
+.tuna-yellow .tuna-signup-left p {
+  color: #cacaca;
+}
+.tuna-yellow .tuna-signup-testimonial i {
+  color: #ffc926;
+}
+
+/*------------------------------------------------------------------
+[7.3 DarkBlue Theme]
+*/
+.body-darkblue {
+  background: #364bb7;
+}
+.tuna-darkblue {
+  background: url(http://t.commonsupport.com/bari/images/backgrounds/darkblue-bg.jpg);
+}
+.tuna-darkblue .tuna-signup-right {
+  background: #364bb7;
+}
+.tuna-darkblue:after {
+  background: #364bb7;
+}
+.tuna-darkblue .tuna-signup-left p {
+  color: #fff;
+}
+.tuna-darkblue .tuna-signup-testimonial i {
+  color: #ccc;
+}
+.tuna-darkblue .bx-wrapper .bx-pager.bx-default-pager a {
+  background: #fff;
+}
+.tuna-darkblue .bx-wrapper .bx-pager.bx-default-pager a.active,
+.tuna-darkblue .bx-wrapper .bx-pager.bx-default-pager a:focus,
+.tuna-darkblue .bx-wrapper .bx-pager.bx-default-pager a:hover {
+  background: rgba(0, 0, 0, 0.6);
+}
+
+/*------------------------------------------------------------------
+[8. Responsive Styles]
+*/
+
+@media only screen and (max-width: 990px) {
+  .tuna-signup-left {
+    padding: 60px 15px 30px;
+  }
+
+  .tuna-signup-testimonial {
+    height: 360px;
+  }
+}
+
+@media only screen and (max-width: 760px) {
+  .container {
+    width: 100%;
+  }
+
+  .tuna-signup-container:after {
+    display: none;
+  }
+  .tuna-signup-left {
+    padding: 15px;
+  }
+  .tuna-signup-left hr {
+    display: none;
+  }
+  .tuna-signup-right {
+    min-height: 400px;
+    padding: 15px 0;
+  }
+  .tuna-steps .step {
+    padding: 0 15px;
+  }
+  .steps-count,
+  .button-container {
+    padding-right: 15px;
+  }
+  .steps-count {
+    margin-top: -55px;
+  }
+  .step-confirm .form-group {
+    margin-bottom: 0;
+    padding: 10px 0;
+  }
+  .step-confirm .control-label {
+    font-size: 16px;
+  }
+  .step-confirm input,
+  .step-confirm .bootstrap-select button {
+    padding: 6px 15px;
+    font-size: 16px;
+  }
+
+  .button-container {
+    bottom: 15px;
+  }
+
+  .formLabel,
+  .formInput,
+  .step-label {
+    font-size: 20px;
+  }
+
+  .tuna-steps .step {
+    top: 30%;
+  }
+}
+
+/*------------------------------------------------------------------
+[9. BootStrap Select]
+*/
+.bootstrap-select.form-control {
+  background: none;
+  border-radius: 0;
+  box-shadow: none;
+  height: auto;
+}
+
+.bootstrap-select button {
+  border: none;
+  background: none;
+  color: #777;
+  border-bottom: 2px solid #777;
+  border-radius: 0;
+  box-shadow: none;
+  outline: none !important;
+  font-size: 16px;
+  font-weight: 300;
+}
+
+.bootstrap-select .btn-default:hover,
+.bootstrap-select.open > .dropdown-toggle.btn-default:hover {
+  background: none;
+  border-color: #777;
+  color: #777;
+  box-shadow: none !important;
+}
+
+.btn-group.open .dropdown-toggle {
+  box-shadow: none;
+}
+
+.bootstrap-select .btn-default.active,
+.bootstrap-select .btn-default:active,
+.bootstrap-select.open > .dropdown-toggle.btn-default,
+.bootstrap-select .btn-default.focus,
+.bootstrap-select .btn-default:focus {
+  background: none;
+  outline: none !important;
+  border-color: #777;
+  color: #777;
+}
+
+.bootstrap-select .dropdown-menu {
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+  background-color: #fff;
+  border-radius: 0;
+}
+
+.bootstrap-select .dropdown-menu a:focus {
+  outline: none;
+}
+
+.bootstrap-select.btn-group .dropdown-menu li a {
+  padding: 6px 20px;
+}
+
+.bootstrap-select.btn-group .dropdown-menu li.selected a {
+  color: #fff;
+  background: #f55661;
+}
+
+/* ---------------------------------- */
+/* Additional Buttons
+------------------------------------- */
+
+button {
+  vertical-align: middle;
+}
+
+span.button,
+button.button,
+input[type="button"],
+input[type="submit"],
+a.button {
+  background-color: #66676b;
+  top: 0;
+  padding: 10px 20px;
+  line-height: 24px;
+  color: #fff;
+  position: relative;
+  font-size: 16px;
+  font-weight: 500;
+  transition: all 0.2s ease-in-out;
+  cursor: pointer;
+  overflow: hidden;
+  border: none;
+  border-radius: 4px;
+  box-shadow: 0 4px 12px rgba(102, 103, 107, 0.35);
+}
+.blue {
+  background: #2a41e8 !important;
+}
+
+/* Icons Aligment*/
+.button i[class^="icon-material"],
+button.button i[class^="icon-material"],
+input[type="button"] i[class^="icon-material"],
+input[type="submit"] i[class^="icon-material"],
+a.button i[class^="icon-material"] {
+  font-size: 18px;
+  height: 0;
+  width: 18px;
+  line-height: 0;
+  top: 2px;
+  position: relative;
+  display: inline-block;
+  margin-left: 3px;
+}
+
+.button i[class^="icon-feather"],
+button.button i[class^="icon-feather"],
+input[type="button"] i[class^="icon-feather"],
+input[type="submit"] i[class^="icon-feather"],
+a.button i[class^="icon-feather"] {
+  font-size: 16px;
+  height: 0;
+  width: 16px;
+  line-height: 0;
+  top: 2px;
+  position: relative;
+  display: inline-block;
+  margin-left: 3px;
+}
+
+/* Dark Style */
+button.button.dark,
+input[type="button"].dark,
+input[type="submit"].dark,
+a.button.dark {
+  background-color: #333;
+  color: #fff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Dark Style */
+button.button.gray,
+input[type="button"].gray,
+input[type="submit"].gray,
+a.button.gray {
+  background-color: #eaeaea;
+  color: #666;
+  box-shadow: none;
+}
+
+button.button.gray:hover,
+input[type="button"].gray:hover,
+input[type="submit"].gray:hover,
+a.button.gray:hover {
+  background-color: #e0e0e0;
+}
+
+body .button i.icon-material-outline-arrow-right-alt {
+  font-size: 22px;
+  top: 4px;
+}
+
+.button.full-width {
+  max-width: 100%;
+  width: 100%;
+  text-align: center;
+  display: block;
+}
+
+.button.big {
+  font-size: 18px;
+  padding: 13px 22px;
+}
+
+body .button.big i {
+  font-size: 22px;
+  top: 3px;
+  position: relative;
+}
+
+/* Slide Out Button */
+.button.button-slide-out span {
+  transform: translateY(0px);
+  opacity: 1;
+  transition: 0.3s;
+}
+
+.button.button-slide-out:hover span {
+  transform: translateY(-10px);
+  opacity: 0;
+  display: inline-block;
+  transition: 0.3s;
+}
+
+.button.button-slide-out i {
+  transform: translateY(calc(-50% + 10px));
+  opacity: 0;
+  display: inline-block;
+  transition: 0.3s;
+  position: absolute;
+  left: 0;
+  right: 0;
+  font-size: 18px;
+  top: 50%;
+  height: 20px;
+}
+
+.button.button-slide-out:hover i {
+  transform: translateY(calc(-50% + 0px));
+  opacity: 1;
+}
+
+/* Move on Hover */
+.move-on-hover {
+  box-shadow: 0 4px 12px rgba(102, 103, 107, 0.1);
+  transform: translateY(0);
+  transition: 0.3s;
+}
+
+.move-on-hover:hover {
+  box-shadow: 0 4px 12px rgba(102, 103, 107, 0.2);
+  transform: translateY(-2px);
+}
+
+/* Centered Button */
+.centered-button {
+  text-align: center;
+  display: block;
+}
+
+.centered-button .button {
+  margin: 0 auto;
+}
+
+/* Bookmark Button */
+span.bookmark-icon {
+  font-size: 20px;
+  position: absolute;
+  z-index: 101;
+  right: 35px;
+  top: 35px;
+  cursor: pointer;
+  background-color: #eee;
+  color: #c0c0c0;
+  display: block;
+  height: 39px;
+  width: 39px;
+  border-radius: 50%;
+  transition: all 0.4s;
+  line-height: 27px;
+}
+
+.bookmark-icon.bookmarked {
+  animation: bookmarked-shadow 0.3s;
+}
+
+@keyframes bookmarked-shadow {
+  0% {
+    box-shadow: 0 0 0 0 rgba(254, 179, 66, 0.8);
+  }
+  100% {
+    box-shadow: 0 0 0 10px rgba(0, 0, 0, 0);
+  }
+}
+
+.bookmark-icon:before {
+  transition: transform 0.4s cubic-bezier(0.8, -0.41, 0.19, 2.5);
+  font-family: "Material-Icons";
+  position: absolute;
+  right: 0;
+  left: 0;
+  text-align: center;
+  top: 6px;
+  content: "\e988";
+}
+
+.bookmark-icon:hover {
+  background-color: #333;
+  color: #fff;
+}
+
+.bookmark-icon.bookmarked {
+  background-color: #feb342;
+  color: #fff;
+}
+
+.bookmark-icon.bookmarked:before {
+  animation: bookmark-icon 0.5s;
+}
+
+@keyframes bookmark-icon {
+  0% {
+    -webkit-transform: scale(0.8);
+    transform: scale(0.8);
+  }
+  50% {
+    -webkit-transform: scale(1.2);
+    transform: scale(1.2);
+  }
+  100% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+  }
+}
+
+/* Bookmark Button */
+.bookmark-button {
+  background-color: #404040;
+  display: inline-block;
+  padding: 0;
+  position: relative;
+  height: 44px;
+  line-height: 44px;
+  color: #fff;
+  padding: 0 15px;
+  padding-left: 59px;
+  border-radius: 4px;
+  transition: 0.4s;
+  cursor: pointer;
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.1);
+}
+
+.bookmark-button .bookmark-icon,
+.bookmark-button:hover .bookmark-icon {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+.bookmark-button .bookmark-icon {
+  border-radius: 4px;
+  position: absolute;
+  left: 0;
+  right: auto;
+  top: auto;
+  height: 44px;
+  width: 44px;
+  border-radius: 4px 0 0 4px;
+  pointer-events: none;
+  transition: 0.4s;
+  animation: none;
+}
+
+.bookmark-button .bookmark-icon:before {
+  top: 8px;
+  color: #fff;
+  transition: 0.4s;
+  font-size: 18px;
+}
+
+.bookmark-button.bookmarked {
+  background-color: #feb342;
+  color: #fff;
+  box-shadow: 0 3px 12px rgba(254, 179, 66, 0.2);
+}
+
+.bookmark-button.bookmarked .bookmark-icon:before,
+.bookmark-button:hover .bookmark-icon:before {
+  color: #fff;
+}
+
+.bookmark-button.bookmarked .bookmark-icon,
+.bookmark-button.bookmarked:hover .bookmark-icon {
+  background-color: rgba(255, 255, 255, 0.16);
+}
+.bookmark-button.bookmarked .bookmarked-text,
+.bookmark-button .bookmark-text {
+  display: block;
+}
+
+.bookmark-button.bookmarked .bookmark-text,
+.bookmark-button .bookmarked-text {
+  display: none;
+}
+
+/* ---------------------------------- */
+/* Button with sliding icon
+------------------------------------- */
+.button-sliding-icon {
+  text-align: center;
+}
+.button-sliding-icon i {
+  opacity: 0;
+  max-width: 0;
+  transition: 0.25s;
+  display: inline-block;
+  transform: translateX(-20px);
+}
+
+.button-sliding-icon:hover i {
+  max-width: 20px;
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* For buttons */
+.button.button-sliding-icon {
+  padding-left: 20px;
+  padding-right: 10px;
+}
+
+.button.button-sliding-icon:hover {
+  padding-right: 20px;
+}
+
+.button.button-sliding-icon i {
+  padding-right: 5px;
+}
+
+.button.button-sliding-icon:hover i {
+  max-width: 20px;
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Typed Cursor
+------------------------------------- */
+.typed-cursor {
+  opacity: 0;
+  -webkit-animation: blink 0.7s infinite;
+  -moz-animation: blink 0.7s infinite;
+  animation: flash 0.7s infinite;
+}
+.cursor {
+  display: block;
+  position: absolute;
+  height: 100%;
+  top: 0;
+  right: -5px;
+  width: 2px;
+  /* Change colour of Cursor Here */
+  background-color: white;
+  z-index: 1;
+  animation: flash 0.5s none infinite alternate;
+}
+@keyframes flash {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+.left-half,
+.right-half {
+  display: -webkit-box; /* OLD - iOS 6-, Safari 3.1-6 */
+  display: -moz-box; /* OLD - Firefox 19- (buggy but mostly works) */
+  display: -ms-flexbox; /* TWEENER - IE 10 */
+  display: -webkit-flex; /* NEW - Chrome */
+  display: flex; /* NEW, Spec - Opera 12.1, Firefox 20+ */
+  flex-direction: column;
+  /*justify-content: center;*/
+}
+/* Pattern styles */
+.regcontainer {
+  display: -webkit-box; /* OLD - iOS 6-, Safari 3.1-6 */
+  display: -moz-box; /* OLD - Firefox 19- (buggy but mostly works) */
+  display: -ms-flexbox; /* TWEENER - IE 10 */
+  display: -webkit-flex; /* NEW - Chrome */
+  display: flex; /* NEW, Spec - Opera 12.1, Firefox 20+ */
+  height: 100%;
+  min-height: 500px;
+}
+.list-group-item {
+  padding: 0 !important;
+  display: inline-block !important;
+  border: 0 !important;
+  margin: 0 15px 0 0;
+  opacity: 0.5;
+  font-size: 16px;
+}
+.list-group-item.active,
+.list-group-item.active:focus,
+.list-group-item.active:hover {
+  color: #2a41e8 !important;
+  background-color: transparent !important;
+  opacity: 1;
+}
+.section-headline {
+  padding-right: 0 !important;
+}
+.section-border {
+  border-bottom: 2px solid rgb(136, 136, 136, 0.5);
+  text-align: center;
+  margin: 0 auto;
+  width: 15% !important;
+  max-width: 25% !important;
+}
+.percent-top-20 {
+  padding-top: 20%;
+}
+.percent-bottom-20 {
+  padding-bottom: 20%;
+}
+.center {
+  text-align: center;
+  margin: 0 auto;
+}
+.center-justify {
+  text-align: center;
+  margin: 0 auto;
+  justify-content: center;
+}
+.left-half {
+  background-image: url();
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  -webkit-box-shadow: 10px 0px 30px 1px rgba(247, 247, 247, 1);
+  -moz-box-shadow: 10px 0px 30px 1px rgba(247, 247, 247, 1);
+  box-shadow: 10px 0px 30px 1px rgba(247, 247, 247, 1);
+  -webkit-box-flex: 1;
+  -moz-box-flex: 1;
+  width: 20%;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  padding: 1rem;
+  z-index: 1;
+}
+
+.right-half {
+  background-color: #fff;
+  /* background styling */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  -webkit-box-flex: 3; /* OLD - iOS 6-, Safari 3.1-6 */
+  -moz-box-flex: 3; /* OLD - Firefox 19- */
+  -webkit-flex: 3; /* Chrome */
+  -ms-flex: 3; /* IE 10 */
+  flex: 3; /* NEW, Spec - Opera 12.1, Firefox 20+ */
+  padding: 1rem;
+  justify-content: center;
+  text-align: center;
+}
+img {
+  /* unused but necessary for inner images */
+  max-width: 100%;
+  max-height: 100vh;
+}
+/* Wizard Template */
+.st-container {
+  position: absolute;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+}
+
+.st-container > input {
+  display: none;
+}
+
+.st-container > input:checked,
+.st-container > a {
+  position: fixed;
+  bottom: 0px;
+  width: 20%;
+  cursor: pointer;
+  font-size: 16px;
+  opacity: 0.5;
+  height: 40px;
+  line-height: 40px;
+}
+.st-container > input:not(:checked),
+.st-container > a {
+  position: fixed;
+  bottom: 0px;
+  width: 20%;
+  cursor: not-allowed;
+  font-size: 16px;
+  opacity: 0.5;
+  height: 40px;
+  line-height: 40px;
+}
+
+/* input[name="radio-set"]:not(:checked) + a {
+  position: fixed;
+  bottom: 0px;
+  width: 20%;
+  cursor: not-allowed;
+  font-size: 16px;
+  opacity: 0.5;
+  height: 40px;
+  line-height: 40px;
+}
+input[name="radio-set"]:checked + a {
+  position: fixed;
+  bottom: 0px;
+  width: 20%;
+  cursor: pointer;
+  font-size: 16px;
+  opacity: 0.5;
+  height: 40px;
+  line-height: 40px;
+} */
+
+.st-container > input {
+  opacity: 0;
+  z-index: 1000;
+}
+
+.st-container > a {
+  z-index: 10;
+  font-weight: 600;
+  background: #fff;
+  border-top: 1px solid #e0e0e0;
+  border-right: 1px solid #e0e0e0;
+  color: #333;
+  text-align: center;
+  text-shadow: 1px 1px 1px rgba(151, 24, 64, 0.2);
+}
+
+.st-container > a:last-of-type {
+  border-right: 0;
+}
+
+/* "Fix" for percentage rounding: add a background bar pseudo element with the same color like the labels */
+.st-container:before {
+  content: "";
+  position: fixed;
+  width: 100%;
+  height: 40px;
+  background: #fff;
+  z-index: 9;
+  bottom: 0;
+  box-shadow: 0 0 18px 0 rgba(0, 0, 0, 0.12);
+}
+
+#st-control-1,
+#st-control-1 + a {
+  left: 0;
+  margin: 0;
+}
+
+#st-control-2,
+#st-control-2 + a {
+  left: 20%;
+  margin: 0;
+}
+
+#st-control-3,
+#st-control-3 + a {
+  left: 40%;
+  margin: 0;
+}
+
+#st-control-4,
+#st-control-4 + a {
+  left: 60%;
+  margin: 0;
+}
+
+#st-control-5,
+#st-control-5 + a {
+  left: 80%;
+  margin: 0;
+}
+
+.st-container > input:checked + a,
+.st-container > input:checked:hover + a {
+  background: #fff;
+  border-top: 3px solid #2a41e8;
+  cursor: pointer;
+  opacity: 1;
+}
+
+.st-container > input:checked + a:after,
+.st-container > input:checked:hover + a:after {
+  bottom: 100%;
+  border: solid transparent;
+  content: "";
+  height: 0;
+  width: 0;
+  position: absolute;
+  pointer-events: none;
+  border-bottom-color: #blue;
+  border-width: 0px;
+  left: 50%;
+  margin-left: -20px;
+}
+
+.st-container > input:hover + a {
+  background: #ad244f;
+}
+
+.st-container > input:hover + a:after {
+  border-bottom-color: #ad244f;
+}
+
+/* /////////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
+
+.bg-container {
+  position: absolute;
+  position: absolute;
+  left: 106px;
+  top: 158px;
+}
+
+.the-background {
+  position: relative;
+  padding: 260px 0px 260px;
+}
+
+.the-background .icon-one {
+  position: relative;
+  top: 15%;
+  left: 10%;
+  width: 34px;
+  height: 34px;
+  display: inline-block;
+  background: url(../images/shapes/icon-23.png)
+    no-repeat;
+}
+
+.the-background .icon-two {
+  position: absolute;
+  bottom: 18%;
+  left: 14%;
+  width: 59px;
+  height: 59px;
+  opacity: 0.5;
+  display: inline-block;
+  background: url(../images/shapes/icon-10.png)
+    no-repeat;
+}
+
+.the-background .icon-three {
+  position: absolute;
+  top: -153px;
+    left: 133px;
+  width: 59px;
+  height: 59px;
+  opacity: 0.5;
+  display: inline-block;
+  background: url(../images/shapes/icon-4.png)
+    no-repeat;
+}
+
+.newlogo { font-size: 30px; font-weight: 600; } .newlogo span { color: #2a41e8; }
+.step-active .inactive-question-opacity { transform: scale(0.85); }
+
+.the-background .icon-four {
+  position: absolute;
+  top: 91px;
+  right: -198px;
+    width: 73px;
+    height: 67px;
+  opacity: 0.5;
+  display: inline-block;
+  background: url(../images/shapes/icon-27.png)
+    no-repeat;
+}
+
+.the-background .icon-five {
+  position: absolute;
+  top: -40px;
+  right: 33%;
+  width: 34px;
+  height: 34px;
+  display: inline-block;
+  background: url(../images/shapes/icon-25.png)
+    no-repeat;
+}
+
+.the-background .icon-six {
+  position: absolute;
+  left: 30%;
+  bottom: -180px;
+  width: 52px;
+  height: 52px;
+  display: inline-block;
+  background: url(../images/shapes/icon-4.png)
+    no-repeat;
+}
+
+.the-background .icon-seven {
+  position: absolute;
+  left: 15%;
+  bottom: -140px;
+  width: 189px;
+  height: 189px;
+  display: inline-block;
+  background: url(../images/shapes/icon-31.png)
+    no-repeat;
+}
+
+.the-background .icon-eight {
+  position: absolute;
+  left: 15%;
+  bottom: -140px;
+  width: 189px;
+  height: 189px;
+  display: inline-block;
+  background: url(../images/shapes/icon-34.png)
+    no-repeat;
+}
+
+.the-background .icon-nine {
+  position: absolute;
+  bottom: -160px;
+  right: 20%;
+  width: 34px;
+  height: 34px;
+  display: inline-block;
+  background: url(../images/shapes/icon-25.png)
+    no-repeat;
+}
+
+.the-background .icon-ten {
+  position: absolute;
+  left: 15%;
+  bottom: -140px;
+  width: 188px;
+  height: 192px;
+  display: inline-block;
+  background: url(../images/shapes/icon-36.png)
+    no-repeat;
+}
+
+.the-background .icon-eleven {
+  position: absolute;
+  top: -100px;
+  right: 12%;
+  width: 188px;
+  height: 189px;
+  display: inline-block;
+  background: url(../images/shapes/icon-40.png)
+    no-repeat;
+}
+
+.the-background .icon-thirteen {
+  position: absolute;
+  top: -100px;
+  right: 12%;
+  width: 188px;
+  height: 189px;
+  display: inline-block;
+  background: url(../images/shapes/icon-41.png)
+    no-repeat;
+}
+
+.the-background .icon-fifteen {
+  position: absolute;
+  top: -100px;
+  right: 12%;
+  width: 188px;
+  height: 189px;
+  display: inline-block;
+  background: url(../images/shapes/icon-43.png)
+    no-repeat;
+}
+
+.the-background .lined-pink {
+  position: absolute;
+  right: -80px;
+  bottom: -75px;
+  width: 189px;
+  height: 189px;
+  z-index: -1;
+  display: inline-block;
+  background: url(../images/shapes/icon-35.png)
+    no-repeat;
+}
+
+.the-background .blue-circle {
+  position: absolute;
+  right: -40px;
+  bottom: -65px;
+  width: 189px;
+  height: 189px;
+  z-index: -1;
+  display: inline-block;
+  background: url(../images/shapes/icon-37.png)
+    no-repeat;
+}
+
+.the-background .yellow-circle {
+  position: absolute;
+  right: 80px;
+  bottom: -65px;
+  width: 189px;
+  height: 189px;
+  z-index: -1;
+  display: inline-block;
+  background: url(../images/shapes/icon-38.png)
+    no-repeat;
+}
+
+.the-background .lightblue-circle {
+  position: absolute;
+  left: 0px;
+  bottom: -65px;
+  width: 189px;
+  height: 189px;
+  z-index: -1;
+  display: inline-block;
+  background: url(../images/shapes/icon-39.png)
+    no-repeat;
+}
+
+.the-background .icon-twelve {
+  position: absolute;
+  left: -40px;
+  bottom: -65px;
+  width: 189px;
+  height: 189px;
+  z-index: -1;
+  display: inline-block;
+  background: url(../images/shapes/icon-37.png)
+    no-repeat;
+}
+
+.the-background .icon-fourten {
+  position: absolute;
+  left: -40px;
+  bottom: -65px;
+  width: 189px;
+  height: 189px;
+  z-index: -1;
+  display: inline-block;
+  background: url(../images/shapes/icon-42.png)
+    no-repeat;
+}
+
+.the-background .icon-sixteen {
+  position: absolute;
+  left: -2px;
+  bottom: 20px;
+  width: 189px;
+  height: 189px;
+  z-index: -1;
+  display: inline-block;
+  background: url(../images/shapes/icon-42.png)
+    no-repeat;
+}
+
+.the-background .icon-seventeen {
+  position: absolute;
+  right: 10%;
+  bottom: 26%;
+  width: 188px;
+  height: 192px;
+  z-index: -1;
+  display: inline-block;
+  background: url(../images/shapes/icon-44.png)
+    no-repeat;
+}
+
+.page-title .icon-one{
+  position:relative;
+  top:15%;
+  left:10%;
+  width:34px;
+  height:34px;
+  display:inline-block;
+  background:url(../images/shapes/icon-23.png) no-repeat;
+}
+
+.page-title .icon-two{
+  position:absolute;
+  bottom:18%;
+  left:14%;
+  width:59px;
+  height:59px;
+  opacity:0.5;
+  display:inline-block;
+  background:url(../images/shapes/icon-10.png) no-repeat;
+}
+
+.page-title .icon-three{
+  position:absolute;
+  top:120px;
+  left:15%;
+  width:59px;
+  height:59px;
+  opacity:0.5;
+  display:inline-block;
+  background:url(../images/shapes/icon-4.png) no-repeat;
+}
+
+.page-title .icon-four{
+  position:absolute;
+  top:120px;
+  right:12%;
+  width:59px;
+  height:59px;
+  opacity:0.5;
+  display:inline-block;
+  background:url(../images/shapes/icon-27.png) no-repeat;
+}
+
+.page-title .icon-five{
+  position:absolute;
+  top:40px;
+  right:33%;
+  width:34px;
+  height:34px;
+  display:inline-block;
+  background:url(../images/shapes/icon-25.png) no-repeat;
+}
+
+.page-title .icon-six{
+  position:absolute;
+  left:30%;
+  bottom:180px;
+  width:52px;
+  height:52px;
+  display:inline-block;
+  background:url(../images/shapes/icon-4.png) no-repeat;
+}
+
+
+
+.page-title h2 .icon-sixteen{
+  position: absolute;
+  left: -2px;
+  bottom: 20px;
+  width: 189px;
+  height: 189px;
+  z-index:-1;
+  display: inline-block;
+  background:url(../images/shapes/icon-42.png) no-repeat;
+}
+
+.page-title .icon-seventeen{
+  position: absolute;
+  right: 10%;
+  bottom: 26%;
+  width: 188px;
+  height: 192px;
+  z-index:-1;
+  display: inline-block;
+  background:url(../images/shapes/icon-44.png) no-repeat;
+}
+
+.question{
+  margin-bottom: 95px;
+}
+.active-question-opacity .formLabel, .active-question-opacity .formInput{
+  opacity: 1!important;
+}
+.inactive-question-opacity .formLabel,.inactive-question-opacity .formInput, .inactive-question-opacity div{
+  opacity: .4!important;
+    margin-left: -9%;
+    padding-left: 0%;
+    font-size: 20px;
+}
+button[disabled], html input[disabled] {
+  cursor: not-allowed;
+}
+
+.center-vertical { display: block; transform: translateY(150%); }
+.tuna-breadcrumbs { position: fixed; top: 25px; float: right; right: 130px; padding-bottom: 0; }
+.inactive-question-opacity .question-box { margin-left: -9%; }
+.question-box { position: relative; display: inline-block !important; background: #f1f1f1; border-radius: 5px; padding: 3px; bottom: 70px; }
+
+@media only screen and (max-width: 990px) {
+  .tuna-breadcrumbs { right: 30px; }
+
+}
+
+/* Breadcrumbs */
+#breadcrumbs {
+	/* position: absolute; */
+	float: right;
+	right: 1px;
+	display: inline-block;
+	font-size: 14.7px;
+	border-radius: 4px;
+	font-weight: 600;
+	color: #333;
+	background-color: #f0f0f0;
+}
+
+#breadcrumbs ul {
+	margin: 0;
+	padding: 12px 22px;
+	line-height: 23px;
+}
+
+#breadcrumbs ul li a {
+	-webkit-transition: all 0.2s ease-in-out;
+	-moz-transition: all 0.2s ease-in-out;
+	-o-transition: all 0.2s ease-in-out;
+	-ms-transition: all 0.2s ease-in-out;
+	transition: all 0.2s ease-in-out;
+	color: #666;
+	font-weight: 500;
+}
+
+#breadcrumbs ul li a:hover { color: #66676b; }
+
+#breadcrumbs ul li {
+	display: inline-block;
+	list-style: none;
+	margin: 0 0 0 7px;
+}
+
+#breadcrumbs ul li:first-child:before { display: none; }
+#breadcrumbs ul li:first-child { margin-left: 0; }
+
+#breadcrumbs ul li:before {
+	content: "";
+	display: inline-block;
+	height: 0;
+	width: 0;
+    border-top: 4px solid transparent;
+    border-bottom: 4px solid transparent;
+    border-left: 4px solid #aaa;
+	font-size: 14px;
+	margin-right: 12px;
+}
+
+#breadcrumbs ul li.home-icon a {
+	opacity: 1;
+	font-size: 24px;
+	top: 4px;
+	position: relative;
+	line-height: 0;
+	padding: 0;
+	display: inline-block;
+}
+
+#breadcrumbs ul li.home-icon i {
+	line-height: 0;
+}
+
+/* Dark Style */
+#breadcrumbs.dark {
+	color: rgba(255,255,255,1);
+	box-shadow: 0 3px 10px rgba(0,0,0,0.15);
+	background-color: #333;
+}
+
+#breadcrumbs.dark ul li a,
+#breadcrumbs.dark ul li a:hover {
+	color: rgba(255,255,255,1);
+}
+
+#breadcrumbs.dark ul li:before {
+    border-left: 4px solid rgba(255,255,255,0.3);
+}
+
+
+/* White Style */
+#breadcrumbs.white {
+	color: #333;
+	box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+	background-color: #fff;
+}
+
+#breadcrumbs.white ul li a { color: #666; }
+#breadcrumbs.white ul li a:hover { color: #66676b; }
+
+#breadcrumbs.white ul li:before {
+    border-left: 4px solid rgba(0,0,0,0.3);
+}
