@@ -47,8 +47,7 @@ A live demo of the site can be accessed [here](#).
    ```bash
    cp .env.example .env
 
-   *Update the .env file with your database and other configurations:*
-   
+   # Update the .env file with your database and other configurations:
    ```bash
    APP_NAME=JobPortal
    APP_URL=http://localhost
@@ -100,5 +99,8 @@ Contributions are welcome! Please follow the contribution guidelines.
    3. Commit your changes (git commit -am 'Add some feature').
    4. Push to the branch (git push origin feature/your-feature).
    5. Create a new Pull Request.
+
+## License
+This project is open-source and licensed under the MIT License.
 
 Thank you for using the Job Portal! If you find this project useful, please consider giving it a ⭐ on GitHub!
