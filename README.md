@@ -21,7 +21,7 @@ Welcome to the **Job Portal**, a platform built using Laravel that connects empl
 
 ## Demo
 
-A live demo of the site can be accessed [here](#). (Replace `#` with your demo link if available)
+A live demo of the site can be accessed [here](#).
 
 ## Installation
 
@@ -37,3 +37,8 @@ A live demo of the site can be accessed [here](#). (Replace `#` with your demo l
    ```bash
    git clone https://github.com/YuriiLohvynenko/Laravel-jobsite.git
    cd Laravel-jobsite
+
+2. **Install Dependencies**
+   ```bash
+   composer install
+   npm install
