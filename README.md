@@ -103,4 +103,4 @@ Contributions are welcome! Please follow the contribution guidelines.
 ## License
 This project is open-source and licensed under the MIT License.
 
-Thank you for using the Job Portal! If you find this project useful, please consider giving it a ⭐ on GitHub!
+**Thank you for using the Job Portal! If you find this project useful, please consider giving it a ⭐ on GitHub**
