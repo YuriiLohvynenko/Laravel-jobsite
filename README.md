@@ -47,7 +47,7 @@ A live demo of the site can be accessed [here](#).
    ```bash
    cp .env.example .env
 
-   # Update the .env file with your database and other configurations:
+Update the .env file with your database and other configurations:
    ```bash
    APP_NAME=JobPortal
    APP_URL=http://localhost
